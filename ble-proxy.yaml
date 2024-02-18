@@ -1,0 +1,40 @@
+esphome:
+  name: ble-proxy
+  friendly_name: BLE Proxy
+
+esp32:
+  board: wemos_d1_mini32
+  framework:
+    type: esp-idf
+    version: recommended
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "wZLm5kBoMjPwzglRbT7R5E451U8O0EWcUST9BdGqBx0="
+
+ota:
+  password: "41f12e6ff0497e50791bee14588f7fc2"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Ble-Proxy Fallback Hotspot"
+    password: "WLbVDXf0KLff"
+
+captive_portal:
+
+esp32_ble_tracker:
+  scan_parameters:
+    interval: 1100ms
+    window: 1100ms
+    active: true
+
+bluetooth_proxy:
+  active: true  
